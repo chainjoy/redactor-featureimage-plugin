@@ -1,14 +1,16 @@
-(function($)
-	$.Redactor.prototype.featureimage = function()
+if (!RedactorPlugins) var RedactorPlugins = {};
+
+(function ($) {
+    RedactorPlugins.featureimage = function()
 	{
 		return {
 			opts: {
 				featureimage: {
-					linkSelector    : '.redactor-featureimage'
+					linkSelector    : '.redactor-featureimage',
 					previewSelector : '.feature-image-preview',
 					inputSelector   : '.feature-image-input',
 				}
-			}
+			},
 			init: function()
 			{
 				if (!this.opts.imageManagerJson) return;
@@ -34,8 +36,9 @@
 				
 			},
 			insert: function(json, direct, e){
-				$(this.opts.featureimage.previewSelector).html('<img src="' + json.url + '">');
-				$(this.opts.featureimage.inputSelector).val(json.url);
+				console.log(json); 
+				$(this.opts.featureimage.previewSelector).html('<img src="' + json.filelink+ '">');
+				$(this.opts.featureimage.inputSelector).val(json.filelink);
 				this.modal.close();
 			}
 		};
